@@ -98,18 +98,10 @@ class MainTest {
 
     private void createData(Session session) {
         session.beginTransaction();
-        Child child1 = new Child();
-        child1.setName("child1");
-        session.persist(child1);
-        Child child2 = new Child();
-        child2.setName("child1");
-        session.persist(child2);
         Parent p = new Parent();
         p.setName("parent");
-        p.setChildren(Set.of(child1, child2));
+        p.setChildren(Set.of(new Child("child1", p), new Child("child2", p)));
         session.persist(p);
-        child1.setParent(p);
-        child2.setParent(p);
         session.flush();
         session.clear();
         session.getTransaction().commit();

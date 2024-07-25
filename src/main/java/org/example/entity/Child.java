@@ -19,6 +19,14 @@ public class Child {
     @JoinColumn(name = "parent_id")
     private Parent parent;
 
+    public Child(String name, Parent p) {
+        this.name = name;
+        this.parent = p;
+    }
+
+    public Child() {
+    }
+
     public Long getId() {
         return id;
     }
